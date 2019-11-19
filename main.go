@@ -33,8 +33,8 @@ func CallBKKAPI() []byte {
 	var resdata bkkAPIResponse
 	json.Unmarshal(body, &resdata)
 
-	res, err := json.Marshal(resdata)
-	println(string(res))
+	res, err := json.Marshal(resdata) // debug
+	println(string(res))              // debug
 	return res
 	// return body
 }
