@@ -38,5 +38,5 @@ func CallBKKAPI() []byte {
 func main() {
 	s := &server{}
 	http.Handle("/go_bkk", s)
-	log.Fatal(http.ListenAndServe(":80", nil))
+	log.Fatal(http.ListenAndServe(":6000", nil))
 }
