@@ -1,12 +1,11 @@
 package main
 
 import (
+	"encoding/json"
 	"io/ioutil"
 	"log"
 	"net/http"
 )
-
-type server struct{}
 
 func (s *server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
@@ -31,8 +30,13 @@ func CallBKKAPI() []byte {
 	if err != nil {
 		log.Fatalln(err)
 	}
+	var resdata bkkAPIResponse
+	json.Unmarshal(body, &resdata)
 
-	return body
+	res, err := json.Marshal(resdata)
+	println(string(res))
+	return res
+	// return body
 }
 
 func main() {
